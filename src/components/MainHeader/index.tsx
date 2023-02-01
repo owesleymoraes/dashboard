@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import * as Styled from './styles'
 import emojis from '../../utils/emojis'
+import { Toggle } from '../Toggle'
 
 export const MainHeader: React.FC = () => {
 
@@ -11,7 +12,7 @@ export const MainHeader: React.FC = () => {
     }, [])
 
     return (<Styled.Container>
-        <h1>Toogle</h1>
+        <Toggle />
         <Styled.Profile>
             <Styled.Welcome>
                 Olá,{emoji}
