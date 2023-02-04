@@ -4,13 +4,17 @@ import * as Styled from './styles'
 import { Content } from '../Content'
 import { MainHeader } from '../MainHeader'
 
-export const Layout: React.FC = () => {
-    return (<h1>
+type LayoutProps = {
+    children: React.ReactNode
+}
+
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
+    return (
         <Styled.Container>
             <MainHeader />
             <Aside />
-            <Content />
+            <Content children={children} />
         </Styled.Container>
-    </h1>)
+    )
 
 }

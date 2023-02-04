@@ -42,7 +42,7 @@ margin: 7px 0;
 
 `
 
-export const Title = styled.h6`
+export const Title = styled.h3`
 color: ${props => props.theme.colors.white};
 margin-left: 10px;
 
