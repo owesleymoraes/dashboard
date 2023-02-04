@@ -7,3 +7,18 @@ Este projeto consiste na criação de uma aplicação usando o react juntamente 
 * react
 * typescript
 * style-components
+* react-icons
+
+## Andamento do Projeto
+
+## 1
+
+<p align = 'center'> 
+    <img width = "460" height = "300" src = "../dashboard/src/utils/img/img-app-1.png">
+<p>
+
+## 2
+
+<p align = 'center'> 
+    <img width = "460" height = "300" src = "../dashboard/src/utils/img/img-app-2.png">
+<p>
