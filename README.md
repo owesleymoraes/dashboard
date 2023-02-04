@@ -14,11 +14,11 @@ Este projeto consiste na criação de uma aplicação usando o react juntamente 
 ## 1
 
 <p align = 'center'> 
-    <img width = "700" height = "500" src = "./src/utils/img/img-app-1.png">
+    <img width = "700" height = "400" src = "./src/utils/img/img-app-1.png">
 <p>
 
 ## 2
 
 <p align = 'center'> 
-    <img width = "700" height = "500" src = "./src/utils/img/img-app-2.png">
+    <img width = "700" height = "400" src = "./src/utils/img/img-app-2.png">
 <p>
