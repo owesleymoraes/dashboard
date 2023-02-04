@@ -9,7 +9,7 @@ align-items: center ;
 export const Label = styled.label`
 position: relative;
 width: 82px;
-height: 41px;
+height: 36px;
 cursor: pointer;
 margin: 0px 7px;
 `
@@ -25,7 +25,7 @@ appearance: none;
 
 :checked ~ span i {
     background-color: ${props => props.theme.colors.secundary};
-    left: 40px;
+    left: 46px;
 }
 
 `
@@ -46,8 +46,8 @@ export const Icon = styled.i`
 top: 2px;
 left: 4px;
 position: absolute ;
-width: 36px;
-height: 36px;
+width: 32px;
+height: 32px;
 background-color: ${props => props.theme.colors.secundary};
 border-radius: 50px;
 transition: 0.5s;
