@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useMemo } from "react";
 import * as Styled from './styles'
+import { useParams } from 'react-router-dom'
 import { Content } from "../../components/Content";
 import { SelectInput } from "../../components/SelectInput";
 import { ContentHeader } from "../../components/ContentHeader";
 import { HistoryFinanceCard } from "../../components/HistoryFinanceCard";
 
+
 export const List: React.FC = () => {
+    const { type } = useParams()
+
+    
+    const title = useMemo(() => {
+        return type === 'entry-balance' ? 'Entradas' : 'Saídas'
+    }, [type])
+
+
+    const lineColor = useMemo(() => {
+        return type === 'entry-balance' ? '#F7931B' : '#E44C4E'
+    }, [type])
+
     const months = [
         { value: 7, label: 'Julho' },
         { value: 8, label: 'Agosto' },
@@ -20,7 +34,7 @@ export const List: React.FC = () => {
 
     return (
         <Styled.ContainerListPaige>
-            <ContentHeader title="Saídas" lineColor="#E44C4E" >
+            <ContentHeader title={title} lineColor={lineColor} >
                 <SelectInput options={months} />
                 <SelectInput options={years} />
             </ContentHeader>
