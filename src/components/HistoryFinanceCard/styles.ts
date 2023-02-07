@@ -6,7 +6,7 @@ position: relative;
 justify-content: space-between;
 align-items: center;
 background-color: ${props => props.theme.colors.tertiary};
-border-radius: 5px;
+border-radius: 10px;
 margin: 10px 0;
 padding: 12px 10px;
 list-style: none;
@@ -23,7 +23,7 @@ transition: all .3s;
 export const Tag = styled.div<{ color: string }>`
 position: absolute;
 left: 0;
-width: 10px;
+width: 15px;
 height: 60%;
 background-color: ${props => props.color};
 
@@ -38,7 +38,8 @@ padding: 10px;
 `
 
 export const Title = styled.span`
-
+font-size: 24px;
+font-weight: 500;
 `
 
 export const Subtitle = styled.small``

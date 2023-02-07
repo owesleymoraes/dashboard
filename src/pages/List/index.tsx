@@ -1,18 +1,34 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import * as Styled from './styles'
 import { useParams } from 'react-router-dom'
+import gains from '../../repositories/gains'
+import expenses from '../../repositories/expenses'
 import { Content } from "../../components/Content";
 import { SelectInput } from "../../components/SelectInput";
 import { ContentHeader } from "../../components/ContentHeader";
 import { HistoryFinanceCard } from "../../components/HistoryFinanceCard";
 
+interface IData {
+    description: string,
+    amountFormatted: string,
+    frequency: string,
+    dataFormatted: string,
+    tagColor: string
+}
+
 
 export const List: React.FC = () => {
+    const [data, setData] = useState<IData[]>([])
     const { type } = useParams()
 
-    
+
     const title = useMemo(() => {
         return type === 'entry-balance' ? 'Entradas' : 'Saídas'
+    }, [type])
+    
+
+    const listData = useMemo(() => {
+        return type === 'entry-balance' ? gains : expenses
     }, [type])
 
 
@@ -32,6 +48,19 @@ export const List: React.FC = () => {
         { value: 2021, label: 2021 },
     ]
 
+    useEffect(() => {
+        const response = listData.map(item => {
+            return {
+                description: item.description,
+                amountFormatted: item.amount,
+                frequency: item.frequency,
+                dataFormatted: item.date,
+                tagColor: item.frequency === 'recorrente' ? "#4E41F0" : '#E44C4E'
+            }
+        })
+        setData(response)
+    }, [listData])
+
     return (
         <Styled.ContainerListPaige>
             <ContentHeader title={title} lineColor={lineColor} >
@@ -49,68 +78,17 @@ export const List: React.FC = () => {
             </Styled.Filters>
 
             <Content>
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="05/02/2023"
-                    amount="R$ 130,00 "
-                />
-
-
+                {data.map((item, index) => {
+                    return (
+                        < HistoryFinanceCard
+                            key={index}
+                            tagColor={item.tagColor}
+                            title={item.description}
+                            subtitle={item.dataFormatted}
+                            amount={item.amountFormatted}
+                        />
+                    )
+                })}
             </Content>
         </Styled.ContainerListPaige>
     )
