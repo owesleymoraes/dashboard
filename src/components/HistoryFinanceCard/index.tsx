@@ -22,8 +22,6 @@ export const HistoryFinanceCard: React.FC<HistoryFinanceCardProps> = ({
                 <Styled.Subtitle>{subtitle} </Styled.Subtitle>
             </Styled.WapperLabel>
             <Styled.Amount> {amount}</Styled.Amount>
-
-
         </Styled.ContainerHistoryFinanceCard>
     )
 }

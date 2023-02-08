@@ -7,6 +7,7 @@ import { Content } from "../../components/Content";
 import { SelectInput } from "../../components/SelectInput";
 import { ContentHeader } from "../../components/ContentHeader";
 import { HistoryFinanceCard } from "../../components/HistoryFinanceCard";
+import { formatCurrent, formatDate } from "../../utils/formatCurrent";
 
 interface IData {
     description: string,
@@ -25,7 +26,7 @@ export const List: React.FC = () => {
     const title = useMemo(() => {
         return type === 'entry-balance' ? 'Entradas' : 'Saídas'
     }, [type])
-    
+
 
     const listData = useMemo(() => {
         return type === 'entry-balance' ? gains : expenses
@@ -52,9 +53,9 @@ export const List: React.FC = () => {
         const response = listData.map(item => {
             return {
                 description: item.description,
-                amountFormatted: item.amount,
+                amountFormatted: formatCurrent(Number(item.amount)),
                 frequency: item.frequency,
-                dataFormatted: item.date,
+                dataFormatted: formatDate(item.date),
                 tagColor: item.frequency === 'recorrente' ? "#4E41F0" : '#E44C4E'
             }
         })
