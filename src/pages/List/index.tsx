@@ -19,8 +19,10 @@ interface IData {
 
 
 export const List: React.FC = () => {
-    const [data, setData] = useState<IData[]>([])
     const { type } = useParams()
+    const [data, setData] = useState<IData[]>([])
+    const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1))
+    const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()))
 
 
     const title = useMemo(() => {
@@ -38,19 +40,30 @@ export const List: React.FC = () => {
     }, [type])
 
     const months = [
+        { value: 1, label: 'Janeiro' },
+        { value: 4, label: 'Maio' },
         { value: 7, label: 'Julho' },
-        { value: 8, label: 'Agosto' },
-        { value: 9, label: 'Setembro' },
+
     ]
 
     const years = [
-        { value: 2023, label: 2023 },
-        { value: 2022, label: 2022 },
-        { value: 2021, label: 2021 },
+        { value: 2019, label: 2019 },
+        { value: 2018, label: 2018 },
+        { value: 2020, label: 2020 },
     ]
 
     useEffect(() => {
-        const response = listData.map(item => {
+        const dateFilter = listData.filter(item => {
+            const date = new Date(item.date)
+            const month = String(date.getMonth() + 1)
+            const year = String(date.getFullYear())
+
+            return month === monthSelected
+                && year === yearSelected
+        })
+
+        const response = dateFilter.map(item => {
+
             return {
                 description: item.description,
                 amountFormatted: formatCurrent(Number(item.amount)),
@@ -60,13 +73,23 @@ export const List: React.FC = () => {
             }
         })
         setData(response)
-    }, [listData])
+    }, [listData, monthSelected, yearSelected])
 
     return (
         <Styled.ContainerListPaige>
             <ContentHeader title={title} lineColor={lineColor} >
-                <SelectInput options={months} />
-                <SelectInput options={years} />
+                <SelectInput
+                    options={months}
+                    onChange={(e) => setMonthSelected(e.target.value)}
+                    defaultValue={monthSelected}
+                />
+
+
+                <SelectInput
+                    options={years}
+                    onChange={(e) => setYearSelected(e.target.value)}
+                    defaultValue={yearSelected}
+                />
             </ContentHeader>
 
             <Styled.Filters>

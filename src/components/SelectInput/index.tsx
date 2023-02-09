@@ -5,13 +5,17 @@ type SelectInputProps = {
     options: {
         value: string | number,
         label: string | number
-    }[]
+    }[],
+
+    defaultValue?: string | number,
+
+    onChange(event: React.ChangeEvent<HTMLSelectElement>): void | undefined
 }
 
-export const SelectInput: React.FC<SelectInputProps> = ({ options }) => {
+export const SelectInput: React.FC<SelectInputProps> = ({ options, defaultValue, onChange }) => {
     return (
         <Styled.Container>
-            <Styled.Select>
+            <Styled.Select onChange={onChange} defaultValue={defaultValue}>
                 {
                     options.map((item, key) => {
                         return <Styled.Option
