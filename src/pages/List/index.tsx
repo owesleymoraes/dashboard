@@ -1,13 +1,14 @@
 import React, { useMemo, useState, useEffect } from "react";
 import * as Styled from './styles'
+import listMonths from '../../utils/months'
 import { useParams } from 'react-router-dom'
 import gains from '../../repositories/gains'
 import expenses from '../../repositories/expenses'
 import { Content } from "../../components/Content";
 import { SelectInput } from "../../components/SelectInput";
 import { ContentHeader } from "../../components/ContentHeader";
-import { HistoryFinanceCard } from "../../components/HistoryFinanceCard";
 import { formatCurrent, formatDate } from "../../utils/formatCurrent";
+import { HistoryFinanceCard } from "../../components/HistoryFinanceCard";
 
 interface IData {
     description: string,
@@ -39,18 +40,42 @@ export const List: React.FC = () => {
         return type === 'entry-balance' ? '#F7931B' : '#E44C4E'
     }, [type])
 
-    const months = [
-        { value: 1, label: 'Janeiro' },
-        { value: 4, label: 'Maio' },
-        { value: 7, label: 'Julho' },
 
-    ]
 
-    const years = [
-        { value: 2019, label: 2019 },
-        { value: 2018, label: 2018 },
-        { value: 2020, label: 2020 },
-    ]
+
+    const months = useMemo(() => {
+        return listMonths.map((months, index) => {
+            return {
+                value: index + 1,
+                label: months,
+            }
+
+        });
+    }, [])
+
+
+    const years = useMemo(() => {
+        let uniqueYears: number[] = [];
+
+        listData.forEach(item => {
+            const date = new Date(item.date);
+            const year = date.getFullYear();
+
+            if (!uniqueYears.includes(year)) {
+                uniqueYears.push(year)
+
+            }
+        });
+
+        return uniqueYears.map(year => {
+            return {
+                value: year,
+                label: year
+            }
+        })
+
+    }, [listData])
+
 
     useEffect(() => {
         const dateFilter = listData.filter(item => {
@@ -83,7 +108,6 @@ export const List: React.FC = () => {
                     onChange={(e) => setMonthSelected(e.target.value)}
                     defaultValue={monthSelected}
                 />
-
 
                 <SelectInput
                     options={years}
