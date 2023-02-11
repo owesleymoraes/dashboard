@@ -24,6 +24,7 @@ export const List: React.FC = () => {
     const [data, setData] = useState<IData[]>([])
     const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1))
     const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()))
+    const [selectedFrequency, setSelectedFrequency] = useState<string[]>(['recorrente', 'eventual'])
 
 
     const title = useMemo(() => {
@@ -39,8 +40,6 @@ export const List: React.FC = () => {
     const lineColor = useMemo(() => {
         return type === 'entry-balance' ? '#F7931B' : '#E44C4E'
     }, [type])
-
-
 
 
     const months = useMemo(() => {
@@ -85,6 +84,7 @@ export const List: React.FC = () => {
 
             return month === monthSelected
                 && year === yearSelected
+                && selectedFrequency.includes(item.frequency)
         })
 
         const response = dateFilter.map(item => {
@@ -98,7 +98,24 @@ export const List: React.FC = () => {
             }
         })
         setData(response)
-    }, [listData, monthSelected, yearSelected])
+    }, [listData, monthSelected, yearSelected, selectedFrequency])
+
+
+    const handleFrequencyClick = (frequency: string) => {
+        const alreadySelected = selectedFrequency.findIndex(item => item === frequency)
+        console.log(`${alreadySelected}`);
+
+        if (alreadySelected >= 0) {
+            const filtered = selectedFrequency.filter(item => item !== frequency)
+            console.log(`${filtered}`);
+            setSelectedFrequency(filtered)
+        }
+        else {
+            // buscando o estados do useState anteriores com o prev.
+            setSelectedFrequency((prev) => [...prev, frequency])
+        }
+
+    }
 
     return (
         <Styled.ContainerListPaige>
@@ -117,10 +134,17 @@ export const List: React.FC = () => {
             </ContentHeader>
 
             <Styled.Filters>
-                <Styled.ButtonFilters colorTag={'#E44C4E'}>
+                <Styled.ButtonFilters
+                    isClick={Boolean(selectedFrequency.includes('recorrente'))}
+                    colorTag={'#4E41F0'}
+                    onClick={() => handleFrequencyClick('recorrente')}>
                     Recorrentes
                 </Styled.ButtonFilters>
-                <Styled.ButtonFilters colorTag={'#4E41F0'}>
+                <Styled.ButtonFilters
+                    isClick={Boolean(selectedFrequency.includes('eventual'))}
+                    colorTag={'#E44C4E'}
+                    onClick={() => handleFrequencyClick('eventual')}
+                >
                     Eventuais
                 </Styled.ButtonFilters>
             </Styled.Filters>

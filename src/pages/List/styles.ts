@@ -10,13 +10,14 @@ margin-bottom: 30px;
 
 `
 
-export const ButtonFilters = styled.button<{ colorTag: string }>`
+export const ButtonFilters = styled.button<{ colorTag: string, isClick: boolean }>`
 font-size: 18px;
 font-weight: 500;
 background: none;
 color: ${props => props.theme.colors.white};
 margin: 0 10px;
 transition: opacity .3s;
+opacity: ${({ isClick }) => isClick ? 1 : .4};
 
 &:hover{
     opacity: .7;
