@@ -35,7 +35,7 @@ export const List: React.FC = () => {
     return type === "entry-balance"
       ? {
           title: "Entradas",
-          lineColor: "#F7931B",
+          lineColor: "#4E41F0",
           dataList: gains,
         }
       : {
@@ -110,7 +110,7 @@ export const List: React.FC = () => {
       const filtered = frequencyFilterSelected.filter(
         (item) => item !== frequency
       );
-      console.log(`${filtered}`);
+    
       setFrequencyFilterSelected(filtered);
     } else {
       // buscando o estados do useState anteriores com o prev.
