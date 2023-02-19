@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from "react";
 import * as Styled from "./styles";
-import listMonths from '../../utils/months'
+import listMonths from "../../utils/months";
 import gains from "../../repositories/gains";
 import expenses from "../../repositories/expenses";
+import { WalletBox } from "../../components/WalletBox";
 import { SelectInput } from "../../components/SelectInput";
 import { ContentHeader } from "../../components/ContentHeader";
 
@@ -13,12 +14,6 @@ export const Dashboard: React.FC = () => {
   const [yearSelected, setYearSelected] = useState<number>(
     new Date().getFullYear()
   );
-
-  const options = [
-    { value: "Wesley", label: "Wesley" },
-    { value: "Maria", label: "Maria" },
-    { value: "Ana", label: "Ana" },
-  ];
 
   const months = useMemo(() => {
     return listMonths.map((months, index) => {
@@ -68,7 +63,7 @@ export const Dashboard: React.FC = () => {
   };
 
   return (
-    <Styled.Container>
+    <Styled.ContainerDashboard>
       <ContentHeader title="Dashboard" lineColor="#F7931B">
         <SelectInput
           options={months}
@@ -82,6 +77,38 @@ export const Dashboard: React.FC = () => {
           defaultValue={yearSelected}
         />
       </ContentHeader>
-    </Styled.Container>
+
+      <Styled.ContentDashboard>
+        <WalletBox
+          title="saldo"
+          amount={150}
+          footerLabel={"atualizado baseado nas entradas e saídas"}
+          nameIcon={"dollar"}
+          color={"#4E41F0"}
+          iconHeight={160}
+          iconWidth={140}
+        />
+
+        <WalletBox
+          title="entradas"
+          amount={5000}
+          footerLabel={"atualizado baseado nas entradas e saídas"}
+          nameIcon={"arrowUp"}
+          color={"#F7931B"}
+          iconHeight={170}
+          iconWidth={120}
+        />
+
+        <WalletBox
+          title="saídas"
+          amount={4850}
+          footerLabel={"atualizado baseado nas entradas e saídas"}
+          nameIcon={"arrowDown"}
+          color={"#FF6961"}
+          iconHeight={170}
+          iconWidth={120}
+        />
+      </Styled.ContentDashboard>
+    </Styled.ContainerDashboard>
   );
 };
