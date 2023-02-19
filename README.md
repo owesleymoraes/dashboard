@@ -4,10 +4,10 @@ Este projeto consiste na criação de uma aplicação usando o react juntamente 
 
 ## Tecnologias
 
-* react
-* typescript
-* style-components
-* react-icons
+- react
+- typescript
+- style-components
+- react-icons
 
 ## Andamento do Projeto
 
@@ -45,4 +45,10 @@ Este projeto consiste na criação de uma aplicação usando o react juntamente 
 
 <p align = 'center'> 
     <img width = "700" height = "400" src = "./src/utils/img/img-app-6.png">
+<p>
+
+## 7
+
+<p align = 'center'> 
+    <img width = "700" height = "400" src = "./src/utils/img/img-app-7.png">
 <p>
