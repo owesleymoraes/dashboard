@@ -6,6 +6,7 @@ import expenses from "../../repositories/expenses";
 import { WalletBox } from "../../components/WalletBox";
 import { SelectInput } from "../../components/SelectInput";
 import { ContentHeader } from "../../components/ContentHeader";
+import { MessageBox } from "../../components/MessageBox";
 
 export const Dashboard: React.FC = () => {
   const [monthSelected, setMonthSelected] = useState<number>(
@@ -107,6 +108,12 @@ export const Dashboard: React.FC = () => {
           color={"#FF6961"}
           iconHeight={170}
           iconWidth={120}
+        />
+        <MessageBox
+          title="Muito Bem!"
+          description="Sua carteira está positiva!"
+          footerText="Continue assim. Considere investir o seu saldo!"
+          nameIcon="happy"
         />
       </Styled.ContentDashboard>
     </Styled.ContainerDashboard>
