@@ -19,7 +19,14 @@ export interface IconsProps {
   /**
    * Variavel de nomes de cada ícone.
    */
-  name: "arrowDown" | "arrowUp" | "dollar" | "happy" | "sad" | "logo";
+  name:
+    | "arrowDown"
+    | "arrowUp"
+    | "dollar"
+    | "happy"
+    | "sad"
+    | "logo"
+    | "grinning";
 }
 
 export const Icon: React.FC<IconsProps> = ({
@@ -41,6 +48,9 @@ export const Icon: React.FC<IconsProps> = ({
       return <Happy width={width} height={height} />;
 
     case "sad":
+      return <Sad width={width} height={height} />;
+
+    case "grinning":
       return <Sad width={width} height={height} />;
 
     case "logo":
