@@ -52,3 +52,10 @@ Este projeto consiste na criação de uma aplicação usando o react juntamente 
 <p align = 'center'> 
     <img width = "700" height = "400" src = "./src/utils/img/img-app-7.png">
 <p>
+
+## 8
+
+<p align = 'center'> 
+    <img width = "700" height = "400" src = "./src/utils/img/img-app-8.png">
+<p>
+

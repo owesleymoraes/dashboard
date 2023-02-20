@@ -31,12 +31,11 @@ export const PieChartGraph: React.FC<PieChartGraphProps> = ({ data }) => (
     <Styled.SideRight>
       <ResponsiveContainer>
         <PieChart>
-         <Pie data={data} dataKey='percent'>
-         {data.map((item, index) => (
+          <Pie data={data} dataKey="percent">
+            {data.map((item, index) => (
               <Cell key={index} fill={item.color} />
             ))}
-          
-         </Pie>
+          </Pie>
         </PieChart>
       </ResponsiveContainer>
     </Styled.SideRight>
