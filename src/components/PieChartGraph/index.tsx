@@ -20,7 +20,7 @@ export const PieChartGraph: React.FC<PieChartGraphProps> = ({ data }) => (
           return (
             <Styled.Legend key={index}>
               <Styled.Percentual color={item.color}>
-                {item.percent}
+                {item.percent}%
               </Styled.Percentual>
               <Styled.Label>{item.name}</Styled.Label>
             </Styled.Legend>
