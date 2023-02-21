@@ -6,6 +6,7 @@ import gains from "../../repositories/gains";
 import expenses from "../../repositories/expenses";
 
 import { WalletBox } from "../../components/WalletBox";
+import { HistoryBox } from "../../components/HistoryBox";
 import { MessageBox } from "../../components/MessageBox";
 import { SelectInput } from "../../components/SelectInput";
 import { ContentHeader } from "../../components/ContentHeader";
@@ -139,6 +140,56 @@ export const Dashboard: React.FC = () => {
     return data;
   }, [totalGains, totalExpenses]);
 
+  const historyData = useMemo(() => {
+    return listMonths
+      .map((_, indexMonth) => {
+        let amountEntry = 0;
+        gains.forEach((gain) => {
+          const date = new Date(gain.date);
+          const gainMonth = date.getMonth();
+          const gainYear = date.getFullYear();
+
+          if (gainMonth === indexMonth && gainYear === yearSelected) {
+            try {
+              amountEntry += Number(gain.amount);
+            } catch {
+              throw new Error("amountEntry invalid.");
+            }
+          }
+        });
+
+        let amountOutput = 0;
+        expenses.forEach((expenses) => {
+          const date = new Date(expenses.date);
+          const expensesMonth = date.getMonth();
+          const expensesYear = date.getFullYear();
+
+          if (expensesMonth === indexMonth && expensesYear === yearSelected) {
+            try {
+              amountOutput += Number(expenses.amount);
+            } catch {
+              throw new Error("amountOutput invalid.");
+            }
+          }
+        });
+        return {
+          monthNumber: indexMonth,
+          month: listMonths[indexMonth].substring(0, 3),
+          amountEntry,
+          amountOutput,
+        };
+      })
+      .filter((item) => {
+        const currentMonth = new Date().getMonth();
+        const currentYear = new Date().getFullYear();
+
+        return (
+          (yearSelected === currentYear && item.monthNumber <= currentMonth) ||
+          yearSelected < currentYear
+        );
+      });
+  }, [yearSelected]);
+
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month);
@@ -172,7 +223,6 @@ export const Dashboard: React.FC = () => {
           defaultValue={yearSelected}
         />
       </ContentHeader>
-
       <Styled.ContentDashboard>
         <WalletBox
           title="saldo"
@@ -208,6 +258,11 @@ export const Dashboard: React.FC = () => {
           nameIcon={nameIcon}
         />
         <PieChartGraph data={relationExpensesVersusGains} />
+        <HistoryBox
+          data={historyData}
+          lineColorEntry="#F7931B"
+          lineColorOutput="#E44C4E"
+        />
       </Styled.ContentDashboard>
     </Styled.ContainerDashboard>
   );
