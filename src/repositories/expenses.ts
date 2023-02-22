@@ -39,7 +39,7 @@ export default [
     amount: "45.70",
     type: "saída",
     frequency: "eventual",
-    date: "2019-01-23",
+    date: "2019-02-23",
   },
   {
     description: "Blusa",

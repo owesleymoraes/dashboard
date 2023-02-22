@@ -1,5 +1,6 @@
 import React from "react";
 import * as Styled from "./styles";
+import { formatCurrent } from "../../utils/formatCurrent";
 import {
   ResponsiveContainer,
   LineChart,
@@ -47,7 +48,7 @@ export const HistoryBox: React.FC<HistoryBoxProps> = ({
         >
           <CartesianGrid strokeDasharray={"3 3"} stroke="#CECECE" />
           <XAxis dataKey="month" stroke="#CECECE" />
-          <Tooltip />
+          <Tooltip formatter={(value) => formatCurrent(Number(value))} />
           <Line
             type="monotone"
             dataKey="amountEntry"
