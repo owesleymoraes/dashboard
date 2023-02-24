@@ -90,6 +90,7 @@ export const Dashboard: React.FC = () => {
     return totalGains - totalExpenses;
   }, [totalGains, totalExpenses]);
 
+  // Situação gráfica interativa de como anda as contas
   const finalResultOfAccounts = useMemo(() => {
     if (totalBalance < 0) {
       return {
@@ -98,11 +99,18 @@ export const Dashboard: React.FC = () => {
         footerText: "Verifique seus gastos, e corte gastos desnecessários.",
         nameIcon: "sad",
       };
+    } else if (totalBalance === 0 && totalExpenses === 0) {
+      return {
+        title: "Ufa, não houve despesa!",
+        description: "Neste mês, você não possui nem despesas nem receitas.",
+        footerText: "Procure ter mais receitas em meses com menos despesas.",
+        nameIcon: "grinning",
+      };
     } else if (totalBalance === 0) {
       return {
         title: "Ufa, por pouco!",
         description:
-          "Neste mês, neste mês gastou exatamente a quantidade que ganhou.",
+          "Neste mês, você gastou exatamente a quantidade que ganhou.",
         footerText:
           "Tenha cuidado na próxima vez tente poupar mais seu dinheiro.",
         nameIcon: "grinning",
@@ -115,32 +123,37 @@ export const Dashboard: React.FC = () => {
         nameIcon: "happy",
       };
     }
-  }, [totalBalance]);
+  }, [totalBalance, totalExpenses]);
 
   const { title, description, footerText, nameIcon } = finalResultOfAccounts;
 
+  //gráfico de pizza
   const relationExpensesVersusGains = useMemo(() => {
     const total = totalGains + totalExpenses;
     const gainsPercentual = (totalGains / total) * 100;
     const expensesPercentual = (totalExpenses / total) * 100;
 
+    const percentGains = Number(gainsPercentual.toFixed(1));
+    const percentExpenses = Number(expensesPercentual.toFixed(1));
+
     const data = [
       {
         name: "Entradas",
         value: totalGains,
-        percent: Number(gainsPercentual.toFixed(1)),
+        percent: percentGains ? percentGains : 0,
         color: "#F7931B",
       },
       {
         name: "Saídas",
         value: totalExpenses,
-        percent: Number(expensesPercentual.toFixed(1)),
+        percent: percentExpenses ? percentExpenses : 0,
         color: "#E44C4E",
       },
     ];
     return data;
   }, [totalGains, totalExpenses]);
 
+  // gráfico de linhas
   const historyData = useMemo(() => {
     return listMonths
       .map((_, indexMonth) => {
@@ -191,6 +204,7 @@ export const Dashboard: React.FC = () => {
       });
   }, [yearSelected]);
 
+  // gráfico de barras - Saídas
   const relationExpensevesRecurrentVersusEventual = useMemo(() => {
     let amountRecurrent = 0;
     let amountEventual = 0;
@@ -213,24 +227,27 @@ export const Dashboard: React.FC = () => {
       });
 
     const total = amountRecurrent + amountEventual;
+    const percentCurrent = Number(((amountRecurrent / total) * 100).toFixed(1));
+    const percentEventual = Number(((amountEventual / total) * 100).toFixed(1));
 
     return [
       {
         name: "Recorrentes",
         amount: amountRecurrent,
-        percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+        percent: percentCurrent ? percentCurrent : 0,
         color: "#F7931B",
       },
 
       {
         name: "Eventual",
         amount: amountEventual,
-        percent: Number(((amountEventual / total) * 100).toFixed(1)),
+        percent: percentEventual ? percentEventual : 0,
         color: "#E44C4E",
       },
     ];
   }, [monthSelected, yearSelected]);
 
+  // gráfico de barras - Entradas
   const relationGainsRecurrentVersusEventual = useMemo(() => {
     let amountRecurrent = 0;
     let amountEventual = 0;
@@ -253,19 +270,21 @@ export const Dashboard: React.FC = () => {
       });
 
     const total = amountRecurrent + amountEventual;
+    const percentCurrent = Number(((amountRecurrent / total) * 100).toFixed(1));
+    const percentEventual = Number(((amountEventual / total) * 100).toFixed(1));
 
     return [
       {
         name: "Recorrentes",
         amount: amountRecurrent,
-        percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+        percent: percentCurrent ? percentCurrent : 0,
         color: "#F7931B",
       },
 
       {
         name: "Eventual",
         amount: amountEventual,
-        percent: Number(((amountEventual / total) * 100).toFixed(1)),
+        percent: percentEventual ? percentEventual : 0,
         color: "#E44C4E",
       },
     ];
@@ -349,7 +368,7 @@ export const Dashboard: React.FC = () => {
           title="Saídas"
         />
 
-<BarchartBox
+        <BarchartBox
           data={relationGainsRecurrentVersusEventual}
           title="Entradas"
         />
