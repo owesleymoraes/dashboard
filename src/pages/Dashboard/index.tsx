@@ -90,7 +90,7 @@ export const Dashboard: React.FC = () => {
     return totalGains - totalExpenses;
   }, [totalGains, totalExpenses]);
 
-  // Situação gráfica interativa de como anda as contas
+  // Situação gráfica interativa de como está as contas
   const finalResultOfAccounts = useMemo(() => {
     if (totalBalance < 0) {
       return {
@@ -104,7 +104,7 @@ export const Dashboard: React.FC = () => {
         title: "Ufa, não houve despesa!",
         description: "Neste mês, você não possui nem despesas nem receitas.",
         footerText: "Procure ter mais receitas em meses com menos despesas.",
-        nameIcon: "grinning",
+        nameIcon: "happy",
       };
     } else if (totalBalance === 0) {
       return {
