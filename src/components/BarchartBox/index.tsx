@@ -1,7 +1,7 @@
 import React from "react";
 import * as Styled from "./styles";
-import { ResponsiveContainer, BarChart, Bar, Cell, Tooltip } from "recharts";
 import { formatCurrent } from "../../utils/formatCurrent";
+import { ResponsiveContainer, BarChart, Bar, Cell, Tooltip } from "recharts";
 
 interface BarchartBoxProps {
   title: string;
@@ -16,7 +16,6 @@ interface BarchartBoxProps {
 export const BarchartBox: React.FC<BarchartBoxProps> = ({ title, data }) => {
   return (
     <Styled.ContainerBarchartBox>
-        
       <Styled.SideLeft>
         <Styled.LabelBarchart>{title}</Styled.LabelBarchart>
         <Styled.ContainerLegend>
@@ -36,17 +35,20 @@ export const BarchartBox: React.FC<BarchartBoxProps> = ({ title, data }) => {
       <Styled.SideRight>
         <ResponsiveContainer>
           <BarChart data={data}>
-            <Bar dataKey={"amount"}>
+            <Bar dataKey={"amount"} name="valor">
               {data.map((indicator, index) => {
                 return (
                   <Cell key={index} cursor="pointer" fill={indicator.color} />
                 );
               })}
             </Bar>
+            <Tooltip
+              cursor={{ fill: "none" }}
+              formatter={(value) => formatCurrent(Number(value))}
+            />
           </BarChart>
         </ResponsiveContainer>
       </Styled.SideRight>
-
     </Styled.ContainerBarchartBox>
   );
 };
