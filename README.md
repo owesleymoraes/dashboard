@@ -64,3 +64,10 @@ Este projeto consiste na criação de uma aplicação usando o react juntamente 
 <p align = 'center'> 
     <img width = "700" height = "400" src = "./src/utils/img/img-app-9.png">
 <p>
+
+## 10
+
+<p align = 'center'> 
+    <img width = "700" height = "400" src = "./src/utils/img/img-app-10.png">
+<p>
+
