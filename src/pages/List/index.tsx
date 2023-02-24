@@ -24,9 +24,11 @@ export const List: React.FC = () => {
   const [monthSelected, setMonthSelected] = useState<number>(
     new Date().getMonth() + 1
   );
+  
   const [yearSelected, setYearSelected] = useState<number>(
     new Date().getFullYear()
   );
+
   const [frequencyFilterSelected, setFrequencyFilterSelected] = useState<
     string[]
   >(["recorrente", "eventual"]);
