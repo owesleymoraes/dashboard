@@ -29,7 +29,7 @@ export const Aside: React.FC = () => {
                 </Styled.MenuItemLink>
                 <Styled.MenuItemLink href='/list/exit-balance'>
                     <MdArrowDownward />
-                    Saidas
+                    Saídas
                 </Styled.MenuItemLink>
                 <Styled.MenuItemLink href='#'>
                     <MdExitToApp />
