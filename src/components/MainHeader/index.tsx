@@ -17,7 +17,7 @@ export const MainHeader: React.FC = () => {
             <Styled.Welcome>
                 Olá,{emoji}
             </Styled.Welcome>
-            <Styled.UserName>Wesley Moraes</Styled.UserName>
+            <Styled.UserName>Wesley Sousa</Styled.UserName>
         </Styled.Profile>
     </Styled.Container>)
 }
