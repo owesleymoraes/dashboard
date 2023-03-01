@@ -13,7 +13,7 @@ export const Aside: React.FC = () => {
     return (
         <Styled.Container>
             <Styled.Header>
-                <Icon name='logo' width={40} height={40} />
+                <Icon name='logo' width={32} height={32} />
                 <Styled.Title>
                     Minha carteira
                 </Styled.Title>

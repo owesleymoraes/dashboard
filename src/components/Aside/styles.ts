@@ -25,7 +25,7 @@ margin-top: 50px;
 export const MenuItemLink = styled.a`
 display: flex;
 align-items: center;
-font-size: 24px;
+font-size: 16px;
 color: ${props => props.theme.colors.info};
 text-decoration: none;
 transition: opacity .3s;
@@ -42,7 +42,7 @@ margin: 7px 0;
 
 `
 
-export const Title = styled.h3`
+export const Title = styled.h4`
 color: ${props => props.theme.colors.white};
 margin-left: 10px;
 
