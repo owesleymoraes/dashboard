@@ -38,7 +38,7 @@ padding: 10px;
 `
 
 export const Title = styled.span`
-font-size: 24px;
+font-size: 16px;
 font-weight: 500;
 `
 
