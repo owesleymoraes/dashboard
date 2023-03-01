@@ -5,7 +5,7 @@ export const ContainerMessageBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 48%;
-  height: 260px;
+  height: 240px;
   background-color: ${(props) => props.theme.colors.tertiary};
   color: ${(props) => props.theme.colors.white};
   border-radius: 7px;
