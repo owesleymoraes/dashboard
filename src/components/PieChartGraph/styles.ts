@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerPieChart = styled.div`
   display: flex;
   width: 48%;
-  height: 260px;
+  height: 240px;
   margin: 10px 0;
   background-color: ${(props) => props.theme.colors.tertiary};
   color: ${(props) => props.theme.colors.white};
@@ -20,7 +20,7 @@ export const Header = styled.h2`
 
 export const ContainerLegend = styled.ul`
   list-style: none;
-  height: 176px;
+  height: 160px;
   padding-right: 16px;
   overflow-y: scroll;
 
