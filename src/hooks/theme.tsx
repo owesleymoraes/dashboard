@@ -31,13 +31,13 @@ interface ITheme {
 const ThemeContext = createContext<IThemeContext>({} as IThemeContext);
 
 const ThemeProvider: React.FC<UseContextThemeProps> = ({ children }) => {
-  const [theme, setTheme] = useState<ITheme>(dark);
+  const [theme, setTheme] = useState<ITheme>(light);
 
   const toggleTheme = () => {
-    if (theme.title === "dark") {
-      setTheme(light);
-    } else {
+    if (theme.title === "light") {
       setTheme(dark);
+    } else {
+      setTheme(light);
     }
   };
   return (
