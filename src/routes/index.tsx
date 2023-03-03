@@ -1,8 +1,6 @@
-import React from 'react'
-import { AppRoutes } from './app.routes'
+import React from "react";
+import { SignIn } from "../pages/SignIn";
 
 export const Routes: React.FC = () => {
-    return (
-        <AppRoutes />
-    )
-}
+  return <SignIn />;
+};
