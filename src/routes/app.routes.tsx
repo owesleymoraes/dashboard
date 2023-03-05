@@ -1,8 +1,8 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { List } from '../pages/List'
 import { Layout } from '../components/Layout'
 import { Dashboard } from '../pages/Dashboard'
-import { List } from '../pages/List'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 
 export const AppRoutes: React.FC = () => {
@@ -11,7 +11,7 @@ export const AppRoutes: React.FC = () => {
         <Layout>
             <Router>
                 <Routes>
-                    <Route path='/dashboard' element={<Dashboard />} />
+                    <Route path='/' element={<Dashboard />} />
                     <Route path='/list/:type' element={<List />} />
                 </Routes>
 

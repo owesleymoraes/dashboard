@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 export const Auth: React.FC = () => {
   return (
     <Router>
-      <Route path="/" element={<SignIn />} />
+      <Route element={<SignIn />} />
     </Router>
   );
 };
