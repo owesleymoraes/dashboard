@@ -19,7 +19,7 @@ export const Aside: React.FC = () => {
                 </Styled.Title>
             </Styled.Header>
             <Styled.MenuContainer>
-                <Styled.MenuItemLink href='/dashboard'>
+                <Styled.MenuItemLink href='/'>
                     <MdDashboard />
                     Dashboard
                 </Styled.MenuItemLink>
