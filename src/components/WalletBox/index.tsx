@@ -1,7 +1,7 @@
 import React from "react";
-import CountUp from 'react-countup';
 import { Icon } from "../Icon";
 import * as Styled from "./styles";
+import CountUp from "react-countup";
 
 interface WalletBoxProps {
   title: string;
@@ -22,24 +22,20 @@ export const WalletBox: React.FC<WalletBoxProps> = ({
   iconHeight,
   iconWidth,
 }) => {
+  //wallet
   return (
-    <Styled.ContainerWallitBox color={color}>
-      <Styled.HeaderWallitBox>
+    <Styled.ContainerWalletBox color={color}>
+      <Styled.HeaderWalletBox>
         <Styled.Title>{title}</Styled.Title>
         <Styled.Amount>
-          <CountUp
-            end={amount}
-            prefix={"R$ "}
-            separator={"."}
-            decimal=","
-            decimals={2}
-          />
+          <Styled.SymbolMoney>R$ </Styled.SymbolMoney>
+          <CountUp end={amount} separator={"."} decimal="," decimals={2} />
         </Styled.Amount>
-      </Styled.HeaderWallitBox>
+      </Styled.HeaderWalletBox>
       <Styled.Icon>
         <Icon name={nameIcon} height={iconHeight} width={iconWidth} />
       </Styled.Icon>
       <Styled.FooterLabel>{footerLabel}</Styled.FooterLabel>
-    </Styled.ContainerWallitBox>
+    </Styled.ContainerWalletBox>
   );
 };
