@@ -34,8 +34,8 @@ export const Header = styled.h2`
   }
 
   @media (max-width: 420px) {
-    padding: 16px;
     margin-bottom: 8px;
+    padding-top: 16px;
   }
 `;
 
