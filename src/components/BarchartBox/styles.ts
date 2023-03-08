@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
-export const ContainerBarchartBox = styled.div`
+export const ContainerBarChartBox = styled.div`
   display: flex;
   width: 48%;
   min-height: 260px;
   margin: 10px 0;
   background-color: ${(props) => props.theme.colors.tertiary};
   color: ${(props) => props.theme.colors.white};
+
+  @media(max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const SideLeft = styled.aside`
@@ -14,7 +21,7 @@ export const SideLeft = styled.aside`
   padding: 30px 20px;
 `;
 
-export const LabelBarchart = styled.h2`
+export const LabelBarChart = styled.h2`
   padding-left: 20px;
   margin-bottom: 10px;
 `;
@@ -38,6 +45,10 @@ export const ContainerLegend = styled.ul`
   // scroll da página
   ::-webkit-scrollbar-track {
     background-color: ${(props) => props.theme.colors.tertiary};
+  }
+
+  @media(max-width: 1200px) {
+    height: auto;
   }
 `;
 

@@ -3,7 +3,7 @@ import * as Styled from "./styles";
 import { formatCurrent } from "../../utils/formatCurrent";
 import { ResponsiveContainer, BarChart, Bar, Cell, Tooltip } from "recharts";
 
-interface BarchartBoxProps {
+interface BarChartBoxProps {
   title: string;
   data: {
     name: string;
@@ -13,11 +13,11 @@ interface BarchartBoxProps {
   }[];
 }
 
-export const BarchartBox: React.FC<BarchartBoxProps> = ({ title, data }) => {
+export const BarchartBox: React.FC<BarChartBoxProps> = ({ title, data }) => {
   return (
-    <Styled.ContainerBarchartBox>
+    <Styled.ContainerBarChartBox>
       <Styled.SideLeft>
-        <Styled.LabelBarchart>{title}</Styled.LabelBarchart>
+        <Styled.LabelBarChart>{title}</Styled.LabelBarChart>
         <Styled.ContainerLegend>
           {data.map((item, index) => {
             return (
@@ -49,6 +49,6 @@ export const BarchartBox: React.FC<BarchartBoxProps> = ({ title, data }) => {
           </BarChart>
         </ResponsiveContainer>
       </Styled.SideRight>
-    </Styled.ContainerBarchartBox>
+    </Styled.ContainerBarChartBox>
   );
 };
