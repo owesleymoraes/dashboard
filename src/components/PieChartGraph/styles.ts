@@ -8,14 +8,35 @@ export const ContainerPieChart = styled.div`
   background-color: ${(props) => props.theme.colors.tertiary};
   color: ${(props) => props.theme.colors.white};
   border-radius: 7px;
+
+  //Iphone 6/7/8plus 414x736 || iphone X 375x812 || ipad 768x1024
+  @media (max-width: 770px) {
+    display: flex;
+    width: 100%;
+  }
 `;
 
 export const SideLeft = styled.aside`
   padding: 30px 20px;
+
+  @media (max-width: 1345px) {
+    padding: 0 16px 4px;
+    margin-bottom: 8px;
+  }
 `;
 
 export const Header = styled.h2`
   margin-bottom: 20px;
+
+  @media (max-width: 1345px) {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 420px) {
+    padding: 16px;
+    margin-bottom: 8px;
+  }
 `;
 
 export const ContainerLegend = styled.ul`
@@ -38,12 +59,22 @@ export const ContainerLegend = styled.ul`
   ::-webkit-scrollbar-track {
     background-color: ${(props) => props.theme.colors.tertiary};
   }
+
+  @media (max-width: 1345px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Legend = styled.li`
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+
+  @media (max-width: 1345px) {
+    font-size: 12px;
+    margin: 4px 0;
+  }
 `;
 
 export const Percentual = styled.div<{ color: string }>`
@@ -54,14 +85,28 @@ export const Percentual = styled.div<{ color: string }>`
   line-height: 40px;
   text-align: center;
   background-color: ${(props) => props.color};
+
+  @media (max-width: 1345px) {
+    height: 36px;
+    width: 36px;
+    line-height: 36px;
+  }
 `;
 
 export const Label = styled.span`
   margin-left: 8px;
+
+  @media (max-width: 1345px) {
+    margin-left: 8px;
+  }
 `;
 
 export const SideRight = styled.main`
   display: flex;
   flex: 1;
   justify-content: center;
+
+  @media (max-width: 1345px) {
+    height: 100%;
+  }
 `;
