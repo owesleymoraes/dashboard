@@ -17,6 +17,10 @@ export const HeaderCard = styled.header`
   display: flex;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: 1280px) {
+    flex-direction: column;
+  }
 `;
 
 export const LabelHeader = styled.h2`
@@ -34,6 +38,7 @@ export const Legend = styled.li`
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  margin-left: 8px;
 `;
 
 export const Percentual = styled.div<{ color: string }>`
@@ -45,6 +50,11 @@ export const Percentual = styled.div<{ color: string }>`
   text-align: center;
   background-color: ${(props) => props.color};
   margin-left: 8px;
+
+  @media (max-width: 1280px) {
+    width: 36px;
+    height: 36px;
+  }
 `;
 
 export const Indicator = styled.span`
