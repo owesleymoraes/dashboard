@@ -1,11 +1,28 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ menuIsOpen: boolean }>`
+  position: relative;
   grid-area: AS;
   color: ${(props) => props.theme.colors.white};
   background-color: ${(props) => props.theme.colors.secundary};
   border-right: 1px solid ${(props) => props.theme.colors.gray};
   padding-left: 20px;
+
+  @media (max-width: 600px) {
+    padding-left: 8px;
+    position: fixed;
+    z-index: 2;
+    height: ${(props) => (props.menuIsOpen ? "100vh" : "70px")};
+    overflow: hidden;
+    width: 170px;
+
+    ${(props) =>
+      !props.menuIsOpen &&
+      css`
+        border: none;
+        border-bottom: 1px solid ${(props) => props.theme.colors.gray};
+      `}
+  }
 `;
 
 export const Header = styled.header`
@@ -14,7 +31,7 @@ export const Header = styled.header`
   height: 70px;
 `;
 
-export const LogoImg = styled.img``;
+export const LogoImg = styled.div``;
 
 export const MenuContainer = styled.nav`
   display: flex;
@@ -63,5 +80,9 @@ export const MenuItemLButton = styled.button`
 
 export const Title = styled.h4`
   color: ${(props) => props.theme.colors.white};
-  margin-left: 10px;
+  margin-left: 8px;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;

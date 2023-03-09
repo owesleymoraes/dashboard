@@ -12,9 +12,11 @@ import {
 export const Aside: React.FC = () => {
   const { signOut } = useAuth();
   return (
-    <Styled.Container>
+    <Styled.Container menuIsOpen={true}>
       <Styled.Header>
-        <Icon name="logo" width={32} height={32} />
+        <Styled.LogoImg>
+          <Icon name="logo" width={32} height={32} />
+        </Styled.LogoImg>
         <Styled.Title>Minha carteira</Styled.Title>
       </Styled.Header>
       <Styled.MenuContainer>
