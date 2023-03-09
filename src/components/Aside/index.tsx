@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Icon } from "../Icon";
 import * as Styled from "./styles";
+import { Toggle } from "../Toggle";
 import { useAuth } from "../../hooks/auth";
 import {
   MdDashboard,
@@ -14,7 +15,7 @@ import {
 export const Aside: React.FC = () => {
   const [toggleMenuIsOpen, setToggleMenuIsOpen] = useState<boolean>(false);
   const { signOut } = useAuth();
-
+  
   const handleToggleMenu = () => {
     setToggleMenuIsOpen(!toggleMenuIsOpen);
   };
@@ -50,6 +51,9 @@ export const Aside: React.FC = () => {
           Sair
         </Styled.MenuItemLButton>
       </Styled.MenuContainer>
+      <Styled.ToggleFooterMobile>
+        {toggleMenuIsOpen && <Toggle />}
+      </Styled.ToggleFooterMobile>
     </Styled.Container>
   );
 };

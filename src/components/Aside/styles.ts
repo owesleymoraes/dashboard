@@ -109,11 +109,18 @@ export const ToggleMenu = styled.button`
     opacity: 0.7;
   }
 
-  @media(max-width: 600px) {
+  @media (max-width: 600px) {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+`;
 
-
+export const ToggleFooterMobile = styled.footer`
+  display: none;
+  @media (max-width: 600px) {
+    display: flex;
+    position: absolute;
+    bottom: 28px;
+  }
 `;
