@@ -31,7 +31,11 @@ export const Header = styled.header`
   height: 70px;
 `;
 
-export const LogoImg = styled.div``;
+export const LogoImg = styled.div`
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
 
 export const MenuContainer = styled.nav`
   display: flex;
@@ -57,6 +61,7 @@ export const MenuItemLink = styled.a`
     margin-right: 8px;
   }
 `;
+
 export const MenuItemLButton = styled.button`
   font-size: 16px;
   display: flex;
@@ -85,4 +90,30 @@ export const Title = styled.h4`
   @media (max-width: 600px) {
     display: none;
   }
+`;
+
+export const ToggleMenu = styled.button`
+  display: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.colors.warning};
+  color: ${(props) => props.theme.colors.white};
+
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  @media(max-width: 600px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
 `;

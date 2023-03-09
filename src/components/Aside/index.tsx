@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Icon } from "../Icon";
 import * as Styled from "./styles";
 import { useAuth } from "../../hooks/auth";
@@ -7,16 +7,29 @@ import {
   MdArrowDownward,
   MdArrowUpward,
   MdExitToApp,
+  MdClose,
+  MdMenu,
 } from "react-icons/md";
 
 export const Aside: React.FC = () => {
+  const [toggleMenuIsOpen, setToggleMenuIsOpen] = useState<boolean>(false);
   const { signOut } = useAuth();
+
+  const handleToggleMenu = () => {
+    setToggleMenuIsOpen(!toggleMenuIsOpen);
+  };
+
   return (
-    <Styled.Container menuIsOpen={true}>
+    <Styled.Container menuIsOpen={toggleMenuIsOpen}>
       <Styled.Header>
-        <Styled.LogoImg>
-          <Icon name="logo" width={32} height={32} />
-        </Styled.LogoImg>
+        <Styled.ToggleMenu onClick={handleToggleMenu}>
+          {toggleMenuIsOpen ? <MdClose /> : <MdMenu />}
+        </Styled.ToggleMenu>
+        {
+          <Styled.LogoImg>
+            <Icon name="logo" width={32} height={32} />
+          </Styled.LogoImg>
+        }
         <Styled.Title>Minha carteira</Styled.Title>
       </Styled.Header>
       <Styled.MenuContainer>
