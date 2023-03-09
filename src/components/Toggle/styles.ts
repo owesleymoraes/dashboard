@@ -19,24 +19,24 @@ export const Button = styled.button`
   appearance: none;
 `;
 
-export const Span = styled.span<{ controllBackground: string }>`
+export const Span = styled.span<{ controlBackground: string }>`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${(props) => props.controllBackground};
+  background-color: ${(props) => props.controlBackground};
   border-radius: 80px;
   transition: 0.5s;
 `;
 
-export const Icon = styled.i<{ controllMovement: number }>`
+export const Icon = styled.i<{ controlMovement: number }>`
   top: 2px;
   position: absolute;
   width: 24px;
   height: 24px;
   background-color: ${(props) => props.theme.colors.secundary};
-  left: ${(props) => props.controllMovement + `px`};
+  left: ${(props) => props.controlMovement + `px`};
 
   border-radius: 50px;
   transition: 0.5s;
