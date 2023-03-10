@@ -16,6 +16,7 @@ export const Container = styled.div`
     "AS CT";
 
   height: 100vh;
+  min-width: 316px;
 
   @media (max-width: 600px) {
     grid-template-columns: 100%;
