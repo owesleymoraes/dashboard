@@ -1,4 +1,20 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const animate = keyframes`
+  0% {
+    // lado direito da tela
+      transform: translateX(100px);
+      opacity: 0;
+}
+  50% {
+      opacity: .3;
+}
+
+  100% {
+    transform: translateX(0px);
+      opacity: 1;
+}
+`;
 
 export const ContainerPieChart = styled.div`
   display: flex;
@@ -8,6 +24,7 @@ export const ContainerPieChart = styled.div`
   background-color: ${(props) => props.theme.colors.tertiary};
   color: ${(props) => props.theme.colors.white};
   border-radius: 7px;
+  animation: ${animate} .5s;
 
   //Iphone 6/7/8plus 414x736 || iphone X 375x812 || ipad 768x1024
   @media (max-width: 770px) {
