@@ -1,4 +1,20 @@
-import styled from 'styled-components'
+import styled,{keyframes} from 'styled-components'
+
+const animate = keyframes`
+  0% {
+    // lado direito da tela
+      transform: translateX(100px);
+      opacity: 0;
+}
+  50% {
+      opacity: .3;
+}
+
+  100% {
+    transform: translateX(0px);
+      opacity: 1;
+}
+`;
 
 export const ContainerHistoryFinanceCard = styled.li`
 display: flex;
@@ -12,6 +28,7 @@ padding: 12px 10px;
 list-style: none;
 cursor: pointer;
 transition: all .3s;
+animation: ${animate} .5s;
 
 &:hover {
     opacity: .7;
