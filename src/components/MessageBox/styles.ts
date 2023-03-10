@@ -1,4 +1,19 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const animate = keyframes`
+  0% {
+      transform: translateX(-100px);
+      opacity: 0;
+}
+  50% {
+      opacity: .3;
+}
+
+  100% {
+    transform: translateX(0px);
+      opacity: 1;
+}
+`;
 
 export const ContainerMessageBox = styled.div`
   display: flex;
@@ -11,14 +26,15 @@ export const ContainerMessageBox = styled.div`
   border-radius: 7px;
   margin: 10px 0;
   padding: 30px 20px;
+  animation: ${animate} .5s;
 
-   //Iphone 6/7/8plus 414x736 || iphone X 375x812 || ipad 768x1024
-   @media (max-width: 770px) {
-   width: 100%;
+  //Iphone 6/7/8plus 414x736 || iphone X 375x812 || ipad 768x1024
+  @media (max-width: 770px) {
+    width: 100%;
   }
 
-   //Iphone 6/7/8plus 414x736
-   @media (max-width: 420px) {
+  //Iphone 6/7/8plus 414x736
+  @media (max-width: 420px) {
     width: 100%;
     height: auto;
   }
@@ -52,12 +68,12 @@ export const Paragrafo = styled.p`
 
   //Iphone 6/7/8plus 414x736 || iphone X 375x812 || ipad 768x1024
   @media (max-width: 770px) {
-   font-size: 14px;
+    font-size: 14px;
   }
 
-   //Iphone 6/7/8plus 414x736
-   @media (max-width: 420px) {
-   margin-bottom: 16px;
+  //Iphone 6/7/8plus 414x736
+  @media (max-width: 420px) {
+    margin-bottom: 16px;
   }
 `;
 
@@ -66,6 +82,6 @@ export const Footer = styled.div``;
 export const LabelFooter = styled.span`
   //Iphone 6/7/8plus 414x736 || iphone X 375x812 || ipad 768x1024
   @media (max-width: 770px) {
-   font-size: 14px;
+    font-size: 14px;
   }
 `;
